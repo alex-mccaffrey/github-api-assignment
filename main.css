@@ -13,6 +13,19 @@
   button:hover {
     cursor: pointer;
   }
+
+  a {
+      color: aqua;
+  }
+
+  a:hover {
+    color: darkblue;
+  }
+
+a:visited {
+    color: purple;
+}
+
   
   ul {
     list-style: none;

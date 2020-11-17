@@ -7,22 +7,18 @@ const searchURL = 'https://api.github.com/users/';
 function getRepos() {
     const user = $('#js-user-handle').val();
     const url = searchURL + user + '/repos';
-
-  console.log(url);
-
 fetch(url)
 .then(response => response.json())
 .then(responseJson => displayResults(responseJson))
-//.catch(error => alert('Something went wrong. Try again later.'));
+.catch(error => alert('Something went wrong. Try again later.'));
 }
 
 
 function displayResults(responseJson) {
-  console.log(responseJson);
   $('#results-list').empty();
-  for (let i = 0; i < responseJson.value.length; i++){
+  for (let i = 0; i < responseJson.length; i++){
     $('#results-list').append(
-      `<li><h2><a href="${responseJson.value[i].html-url}">${responseJson.value[i].name}</a></h3>
+      `<li><h2><a href="${responseJson[i].html_url}" target="_blank">${responseJson[i].name} </a></h3>
       </li>`
     )};
 
@@ -33,7 +29,6 @@ function displayResults(responseJson) {
 function submitForm() {
   $('form').submit(event => {
     event.preventDefault();
-    console.log('submitting')
     getRepos();
   });
 }
